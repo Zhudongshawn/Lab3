@@ -16,6 +16,7 @@ class Student {
     function construct() {
 $this->surname = '';
 $this->first_name = '';
+$this->status = array();
 $this->emails = array();
 $this->grades = array();
 }
@@ -35,13 +36,23 @@ $total += $value;
 return $total / count($this->grades);
 }
 
+function add_status($which,$status){
+                    $this->status[$which] = $status;
+        }
+
 function toString() {
 $result = $this->first_name . ' ' . $this->surname;
-$result .= ' ('.$this->average().")\n"; foreach($this->emails as $which=>$what)
+$result .= ' ('.$this->average().")\n";  
+foreach($this->emails as $which=>$what)
+$result .= $which . ': '. $what. "\n";
+
+
+foreach($this->status as $which=>$what)
 $result .= $which . ': '. $what. "\n";
 $result .= "\n";
-return '<pre>'.$result.'</pre>';
-}
 
+return '<pre>'.$result.'</pre>';
+
+}
 
 }
